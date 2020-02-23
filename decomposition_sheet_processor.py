@@ -18,6 +18,16 @@ def main(argv):
   parser.add_argument("-w", "--wardrobe", required=True, help="path to file with newline separated wardrobe items", dest="wardrobe")
   parser.add_argument("-o", "--output-file", required=True, help="path to output file destination", dest="output")
   config = parser.parse_args()
-  print(config.wardrobe) #comment/uncomment for debug
+  print (config.wardrobe) #comment/uncomment for debug
+
+  try:
+    with open(config.sheet) as sheet:
+      sheetlines = sheet.readlines()
+  except:
+    print("Problem reading input decomposition sheet, exiting")
+    sys.exit(2)
+
+  print (sheetlines[0]) #comment/uncomment for debug
+  print (sheetlines[2]) #comment/uncomment for debug
 
 main(sys.argv[1:])
